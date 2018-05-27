@@ -27,7 +27,7 @@ def allImages(request):
 
 #fetch images from flickr api and display
 def getImages(request):
-	reqimages = requests.get("https://api.flickr.com/services/rest/?method=flickr.people.getPublicPhotos&api_key=a5e95177da353f58113fd60296e1d250&user_id=24662369@N07&format=json&nojsoncallback=1")
+	reqimages = requests.get("https://api.flickr.com/services/rest/?method=flickr.people.getPublicPhotos&api_key=APIKEY&user_id=USERID&format=json&nojsoncallback=1")
 	images = json.loads(reqimages.content)
 
 	photolen = len(images['photos']['photo'])
