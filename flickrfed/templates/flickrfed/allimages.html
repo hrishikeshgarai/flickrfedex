@@ -1,0 +1,100 @@
+
+<html>
+<head>
+	{% load staticfiles %}
+	<title>flickr.</title>
+	<style type="text/css">
+		body{
+			background-color: #d3d3d3;
+			background-repeat: no-repeat;
+			background-position: top;
+			background-size: 100%;
+		}
+		img {
+			height: 200px;
+			width: 400px;
+		}
+		#imagesContainer {
+			height: 250px;
+		}
+		#imgContainer {
+			display: inline-block;
+			margin-bottom: 10px;
+		}
+		#descContainer {
+			width: 35%;
+			display: inline-block;
+			vertical-align: top;
+			padding-left: 28px;
+			padding-top: 5%;
+			font-size: 20px;
+		}
+		ul {
+		    list-style-type: none;
+		    height: 70px;
+		    margin: 0;
+		    padding: 0;
+		    overflow: hidden;
+		    background-color: #333;
+		}
+		.searchbox {
+			padding-top: 15px;
+		    float: right;
+		}
+		li a {
+		    color: #ffffff;
+		    padding: 16px 16px;
+		    text-decoration: none;
+		}
+		input {
+			height: 25px;
+    		width: 70%;
+		}
+	</style>
+</head>
+
+<body>
+<!-- Headerline	 -->
+	<ul>
+		<li style="color: white; float: left; padding-left: 10px; font-size: 35px; padding-top: 15px;"><a href="{% url 'home' %}"><strong>flickr.</strong></a></li>
+	</ul>
+
+	<br />
+
+	<div id="imagesContainer"></div>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript">
+
+		var keyword = "";
+
+// ajax query
+		function getAjax(){
+		console.log(keyword);
+		var jsontext = JSON.stringify(keyword);
+		console.log(jsontext);
+        $.ajax({
+          url : 'ajax/getnewimg',
+          data: jsontext, 
+          async: false,
+          success: function(data){
+          	console.log("abc");
+          	var imgurl = [];
+          	var imgdesc = [];
+          	$.each(data, function (index, element) {
+          		imgurl.push(element[0]);
+          		imgdesc.push(element[1]);
+          	});
+
+          container = document.getElementById("imagesContainer");
+          for (var i = 0; i < imgurl.length; i++) {
+          	container.innerHTML = container.innerHTML + "<div id = 'imgContainer'><img src=\"" + imgurl[i] +"\"/></div>" + "<div id='descContainer'>" + imgdesc[i] + "</div>" + "<br/>";
+          }
+          },datatype : "json"});
+    	}
+
+		getAjax();
+
+	</script>
+</body>
+</html>

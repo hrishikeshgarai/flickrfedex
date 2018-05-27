@@ -1,0 +1,50 @@
+<html>
+<head>
+	{% load staticfiles %}
+	<title>flickr.</title>
+	<style type="text/css">
+		body{
+			background-image: url({% static 'flickrfed/img/background.jpg' %});
+			background-repeat: no-repeat;
+			background-position: top;
+			background-size: 100%;
+		}
+		ul {
+		    list-style-type: none;
+		    height: 70px;
+		    margin: 0;
+		    padding: 0;
+		    overflow: hidden;
+		    background-color: #333;
+		}
+		li {
+			color: white;
+			float: left;
+			padding-left: 10px;
+			font-size: 35px;
+			padding-top: 15px;
+		}
+		li a {
+		    color: #ffffff;
+		    padding: 16px 16px;
+		    text-decoration: none;
+		}
+		div {
+			padding-top: 10px;
+		}
+		.heading {
+			padding-left: 16px;
+			background-color: rgba(255, 255, 255, .4);
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li><a href="{% url 'home' %}"><strong>flickr.</strong></a></li>
+	</ul>
+	<div>
+		<p><h1 class='heading'>ABOUT THE WEBSITE</h1></p>
+		<p style="font-size: 20px; padding-left: 16px">flickr. fetches images from NASA's account via the Flickr API!</p>
+	</div>
+</body>
+</html>
