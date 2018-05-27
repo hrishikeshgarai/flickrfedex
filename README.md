@@ -8,4 +8,4 @@ The web application is built using Django in the Backend and JavaScript/HTML/CSS
 
 Below is a screenshot of the homepage of web application.
 
-![alt text]( flickrfedex/Homepage.PNG)
+![alt text](https://github.com/hrishikeshgarai/flickrfedex/blob/master/Homepage.PNG)
